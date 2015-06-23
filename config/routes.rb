@@ -1,4 +1,17 @@
 RottenMangoes::Application.routes.draw do
+  
+  resources :movies do
+    resources :reviews, only: [:new, :create]
+  end
+  resources :users, only: [:new, :create]
+  resources :sessions, only: [:new, :create, :destroy]
+
+  root to: 'movies#index'
+
+end
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -53,4 +66,3 @@ RottenMangoes::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end
