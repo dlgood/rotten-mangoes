@@ -1,6 +1,6 @@
 class Movie < ActiveRecord::Base
 
-  require 'pry'
+  mount_uploader :image, PosterUploader
 
   has_many :reviews
 
