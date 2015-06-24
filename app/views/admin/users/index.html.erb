@@ -1,0 +1,8 @@
+ <h1>Rotten Mangoes - All Users</h1>
+ <%= link_to "Create a new user", new_admin_user_path %>
+  <hr>
+  <%= paginate @users %>
+  <% @users.each do |user| %>
+    <p><%= user.id %> | <%= link_to user.firstname, admin_user_path(user) %> | <%= user.email %></p>
+    <hr>
+  <% end %>
