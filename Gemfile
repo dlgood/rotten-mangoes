@@ -5,7 +5,6 @@ gem 'rails', '4.0.0'
 
 gem 'pry'
 
-
 gem 'bootstrap-sass'
 
 # Use sqlite3 as the database for Active Record
