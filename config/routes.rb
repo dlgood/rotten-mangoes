@@ -10,7 +10,7 @@ RottenMangoes::Application.routes.draw do
     resources :users
   end
 
-
+  get "search(/:termen)" => "search#index"
   root to: 'movies#index'
 
 end
