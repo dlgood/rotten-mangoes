@@ -16,11 +16,29 @@ class ApplicationController < ActionController::Base
     redirect_to movies_path unless current_user && current_user.admin 
   end
 
-
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
+  def set_current_user_id(user_id)
+    session[:user_id] = user_id
+    @current_user = nil
+  end
+
+  def admin_user
+    @admin_user ||= User.find_by(:id => session[:admin_id])
+  end
+
+  def set_admin_user_id(admin_user_id)
+    session[:admin_id] = admin_user_id
+    @admin_user = nil
+  end
+
+  def admin_user?
+    !admin_user.nil?
+  end
+
   helper_method :current_user
+  helper_method :admin_user?
 
 end

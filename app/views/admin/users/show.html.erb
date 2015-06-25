@@ -6,3 +6,4 @@
 <p><%= @user.created_at %></p>
 <p><%= @user.updated_at %></p>
 <%= link_to "delete", admin_user_path(@user), method: :delete %>
+<%= link_to "impersonate", session_impersonate_path(:user_id => @user.id), :method => :post %>

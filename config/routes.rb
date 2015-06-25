@@ -13,6 +13,8 @@ RottenMangoes::Application.routes.draw do
     resources :users
   end
 
+  post "session/impersonate", to: 'sessions#impersonate', as: :session_impersonate
+
   # get "movies/search", to: 'movies#search'
   # get 'movies/search', to: 'search#index'
 

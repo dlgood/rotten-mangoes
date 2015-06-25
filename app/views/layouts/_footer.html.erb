@@ -1,5 +1,6 @@
 <footer>
   <small>
+
     <% if current_user %>
       Signed in as <%= current_user.full_name %> (<%= link_to "Log out", session_path, method: :delete %>)
     <% else %>
@@ -7,6 +8,9 @@
     <% end %>
     <% if current_user && current_user.admin? %>
       You are an admin! <%= link_to "All Users", admin_users_path %>
+    <% end %>
+    <% if admin_user? %>
+      You are an admin impersonating <%= current_user.full_name %>. Log out to go back to being your admin self. 
     <% end %>
   </small>
 </footer>
