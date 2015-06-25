@@ -22,6 +22,22 @@ class Movie < ActiveRecord::Base
   validates :release_date,
     presence: true
 
+  scope :search_results, -> (search_term) { where("title LIKE ? OR director LIKE ?", "%#{search_term}%", "%#{search_term}%")}
+
+  # def duration_results
+  #   if params[:duration].present?
+  #     case params[:duration].to_i
+  #       when 1
+  #         @results = @results.where('runtime_in_minutes < 90')
+  #       when 2 
+  #         @results = @results.where('runtime_in_minutes < 120 AND runtime_in_minutes >= 90')
+  #       when 3
+  #         @results = @results.where('runtime_in_minutes > 120')
+  #     end
+  #   end  
+  # end
+
+
 #  validate :release_date_is_in_the_future
 
   def review_average   

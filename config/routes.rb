@@ -1,6 +1,9 @@
 RottenMangoes::Application.routes.draw do
   
   resources :movies do
+    collection do 
+      get 'search'
+    end
     resources :reviews, only: [:new, :create]
   end
   resources :users, only: [:new, :create]
@@ -10,7 +13,11 @@ RottenMangoes::Application.routes.draw do
     resources :users
   end
 
-  get "search(/:termen)" => "search#index"
+  # get "movies/search", to: 'movies#search'
+  # get 'movies/search', to: 'search#index'
+
+  # get "search(/:termen)" => "search#index"
+
   root to: 'movies#index'
 
 end

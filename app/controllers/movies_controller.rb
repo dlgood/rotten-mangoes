@@ -42,6 +42,12 @@ class MoviesController < ApplicationController
     redirect_to movies_path
   end
 
+  def search
+    @search_results = Movie.search_results(params[:search_term])
+    render 'search/index'
+  end
+
+
   protected
 
   def movie_params

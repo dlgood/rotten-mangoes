@@ -1,16 +1,18 @@
 <h1>Search results:</h1>
-  <% @results.each do |movie| %>
-    <%= image_tag movie.image_url(:thumb) %>
-    <h2><%= link_to movie.title, movie_path(movie) %></h2>
-    <h3><%= formatted_date(movie.release_date) %></h3>
-    <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
-    <p><%= movie.description %></p>
-    <p>
-      <% if movie.reviews.any? %>
-        <%= movie.review_average %>/10 
-      <% else %>
-        No reviews yet.
-      <% end %>
-    </p>
-    <hr>
+  <% if @search_results %>
+    <% @search_results.each do |movie| %>
+      <%= image_tag movie.image_url(:thumb) %>
+      <h2><%= link_to movie.title, movie_path(movie) %></h2>
+      <h3><%= formatted_date(movie.release_date) %></h3>
+      <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
+      <p><%= movie.description %></p>
+      <p>
+        <% if movie.reviews.any? %>
+          <%= movie.review_average %>/10 
+        <% else %>
+          No reviews yet.
+        <% end %>
+      </p>
+      <hr>
+    <% end %>
   <% end %>
